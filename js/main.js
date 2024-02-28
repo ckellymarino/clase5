@@ -40,12 +40,12 @@ function Usuario (nombre, edad, nacionalidad, casado) { //cuando es una función
 const usuario2 = new Usuario("Martín", 41, "Argentina", false);
 const usuario3 = new Usuario("Caro", 36, "Argentina", false);
 
-const nombreIngresado = prompt("Ingrese nombre");
+const nombreIngresado1 = prompt("Ingrese nombre");
 const edadIngresado = prompt("Ingrese edad");
 const nacionalidadIngresada = prompt("Ingrese nacionalidad");
 let casadoIngresado = prompt("Ingrese casado");
 
-const usuario4 = new Usuario(nombreIngresado, edadIngresado, nacionalidadIngresada, casadoIngresado);
+const usuario4 = new Usuario(nombreIngresado1, edadIngresado, nacionalidadIngresada, casadoIngresado);
 //new se vincula al this, llama al this. es al nuevo objeto instaneado
 console.log(usuario4); //con esto el usuario me agrega los datos, solo que no puedo generar varios usuarios porque no tengo donde guardar distintos por ahoraa
 
@@ -53,4 +53,66 @@ let edad;
 do {
     edad = prompt("Ingrese edad");
 } while (isNaN(edad)) //siempre y cuando el usuario ingrese un no numero va a seguir mostrando el cartel
+
+function pedirNumero(mensaje) {
+    let input;
+    do {
+        input = Number(prompt(mensaje));
+        if (isNaN(input)) {
+            alert("Por favor, ingresa un número válido.");
+        }
+    } while (isNaN(input));
+    return input;
+}
+
+let numero1 = pedirNumero("Número 1")
+
+//Metodos, tienen que estar creadas adentro de un objeto (en si son funciones)
+
+let string = "Hola mundo!";
+console.log(string); //string es un objeto para java
+
+console.log(string,length); //lenght nos da la longitud de un string
+
+// let nombreIngresado2;
+// do {
+//     let nombreIngresado2 = prompt("Ingrese su nombre");
+// } while (nombreIngresado2.length < 3 || nombreIngresado2.length > 10);
+// //parte condicional del ciclo for
+// console.log(nombreIngresado2)
+
+// console.log(string.substring(2, 5));
+
+//string.trim le saca los espacios
+
+// console.log(string.trim);
+
+// operador IN, para saber si existe cierta propiedad en el objeto
+
+console.log("nombre" in usuario1); //siempre responde true o false
+console.log("apodo" in usuario1);
+
+for (const propiedad in usuario1) { //este ciclo se reproduce tantas veces como propiedades exista en el objeto
+    console.log(propiedad); //en un ciclo for in
+}
+
+// Clases ( es lo mismo que una funcion constructora pero mas simple)
+
+class Producto {
+    constructor(titulo, precio, color){
+        this.titulo = titulo;
+        this.precio = precio;
+        this.color = color;
+    }
+    sumarIVA(){
+        this.precio = this.precio * 1.21;
+    }
+}
+
+const producto1 = new Producto("Sillón", 50, "verde");
+console.log(producto1);
+producto1.sumarIVA();
+console.log(producto1);
+
+
 
